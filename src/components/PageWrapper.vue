@@ -25,42 +25,6 @@ import TheFooter from './TheFooter.vue';
 import SocialShare from './SocialShare.vue';
 
 // 載入 Google Translate API
-const loadGoogleTranslate = () => {
-  if (typeof window.google === 'undefined' || typeof window.google.translate === 'undefined') {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    document.head.appendChild(script);
-
-    // 全域函數用於初始化
-    // PageWrapper.vue <script setup> 內
-
-// 全域函數用於初始化 (必須掛載在 window 上)
-    window.googleTranslateElementInit = function() {
-      new window.google.translate.TranslateElement({
-        pageLanguage: 'zh-TW',
-        // ... 其他設定
-        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    };
-
-    const loadGoogleTranslate = () => {
-      if (typeof window.google === 'undefined' || typeof window.google.translate === 'undefined') {
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        // 注意這個 src 參數中的 cb=googleTranslateElementInit
-        script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-        document.head.appendChild(script);
-      } else {
-        // 如果已經載入，直接呼叫初始化函數
-        window.googleTranslateElementInit();
-      }
-    };
-  } else {
-    // 如果已經載入，直接呼叫初始化函數
-    window.googleTranslateElementInit();
-  }
-};
 
 // 載入 Facebook SDK
 const loadFacebookSDK = () => {
@@ -79,7 +43,18 @@ const loadFacebookSDK = () => {
 };
 
 onMounted(() => {
-  loadGoogleTranslate();
+  window.googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({
+      pageLanguage: 'zh-TW',
+      includedLanguages: 'en,es,fr,de,it,zh-CN,ja,ko,th,vi,my,id,ms,ar,he,ru,tg,uk,hi,tr,pt,nl,is,fi,sv,no,ro,kk,bo,mn,la,fil,tl,el',
+      layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+    }, 'google_translate_element')
+  }
+
+  const script = document.createElement('script')
+  script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+  script.async = true
+  document.head.appendChild(script)
   loadFacebookSDK();
 });
 </script>
