@@ -8,11 +8,11 @@
     <nav>
       <strong>📖 內容導覽：</strong>
       <ul>
-        <li><a href="#introduction">前言與基本說明</a></li>
-        <li><a href="#problems">音高調整問題說明</a></li>
-        <li><a href="#examples">實際演奏案例</a></li>
-        <li><a href="#videos">影片示範</a></li>
-        <li><a href="#conclusion">小結與心得</a></li>
+        <li><span class="nav-link" @click="scrollTo('introduction')">前言與基本說明</span></li>
+        <li><span class="nav-link" @click="scrollTo('problems')">音高調整問題說明</span></li>
+        <li><span class="nav-link" @click="scrollTo('examples')">實際演奏案例</span></li>
+        <li><span class="nav-link" @click="scrollTo('videos')">影片示範</span></li>
+        <li><span class="nav-link" @click="scrollTo('conclusion')">小結與心得</span></li>
         <li><router-link to="/process_of_developing_app.html">Harp Real開發技術介紹</router-link></li>
       </ul>
     </nav>
@@ -31,7 +31,6 @@
 
     <section id="examples">
       <h2>實際演奏案例</h2>
-
       <h3 id="armor_hero_emperor">🎵《帝皇再臨》</h3>
       <p>此曲主要為 C 大調，但伴奏中出現 <em>升 A</em>（降 B），我在錄製時必須中途暫停調音，造成演奏中斷（本影片有剪接過）。</p>
       <video controls><source src="/帝皇再臨.mp4" type="video/mp4"></video>
@@ -68,7 +67,21 @@
 
 <script setup>
 import PageWrapper from '../components/PageWrapper.vue';
-// 影片檔案（如帝皇再臨.mp4）需在 Vue 專案的 public 或 assets 資料夾中
+import { nextTick } from 'vue';
+
+// 錨點導航的核心方法
+const scrollTo = (id) => {
+  // nextTick 確保 DOM 元素已渲染
+  nextTick(() => {
+    const targetElement = document.getElementById(id);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth', // 平滑滾動
+        block: 'start'       // 讓區塊頂部對齊視窗
+      });
+    }
+  });
+};
 </script>
 
 <style scoped>
@@ -85,5 +98,15 @@ nav ul {
 }
 nav ul li {
   margin: 6px 0;
+}
+/* 為新的錨點連結加上手形游標，使其看起來像可點擊 */
+.nav-link {
+  cursor: pointer;
+  color: #3498db; /* 藍色，像連結 */
+  text-decoration: underline;
+  display: inline-block;
+}
+.nav-link:hover {
+  color: #2980b9;
 }
 </style>
