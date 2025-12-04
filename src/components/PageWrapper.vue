@@ -1,8 +1,7 @@
 <template>
   <div class="page-container">
     <div id="google_translate_element"></div>
-    點擊上方的語言選單以切換語言
-
+    點擊上方的語言選單以切換語言。
     <main>
       <slot></slot>
     </main>
