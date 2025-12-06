@@ -61,7 +61,6 @@
         <li>Way Back Home<br><video controls><source src="/way_back_home.mp4"></video></li>
       </ol>
     </section>
-
     <section id="conclusion">
       <h2>🧠 小結與心得</h2>
       <p>總結來說，《Harp Real》的音色真實，模擬設計也非常有趣，但其缺乏即時變調和踏板功能，對於那些需要在同一首曲子中轉調的使用者來說，無疑是一個實際的限制。</p>
