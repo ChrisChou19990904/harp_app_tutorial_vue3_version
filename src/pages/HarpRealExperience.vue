@@ -13,7 +13,7 @@
         <li><span class="nav-link" @click="scrollTo('examples')">實際演奏案例</span></li>
         <li><span class="nav-link" @click="scrollTo('videos')">影片示範</span></li>
         <li><span class="nav-link" @click="scrollTo('conclusion')">小結與心得</span></li>
-        <li><span class="nav-link" @click="scrollTo('additional-thoughts')"></span></li>
+        <li><span class="nav-link" @click="scrollTo('additional-thoughts')">其他心得與補充</span></li>
         <li><router-link to="/process_of_developing_app.html">Harp Real開發技術介紹</router-link></li>
       </ul>
     </nav>
