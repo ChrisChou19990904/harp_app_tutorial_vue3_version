@@ -48,7 +48,7 @@
     </ul>
 
     <h2>🎬 我的演奏作品與紀錄</h2>
-    <p>📁 點這裡查看我在 Harp Real 上的 13 段演奏與螢幕錄影：<br>
+    <p>📁 點這裡查看我在 Harp Real 上的 14 段演奏與螢幕錄影：<br>
       👉 <router-link to="/essence_of_recordings.html">/harp-real-recordings</router-link></p>
 
     <h2>📌 後續計畫</h2>
